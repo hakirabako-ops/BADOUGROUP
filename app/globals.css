@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------
+   BADOU GROUP — design tokens
+   Palette: anthracite aluminium (ink) + safety orange (accent) +
+   glass blue (glass) — see AGENTS.md for the "why".
+--------------------------------------------------------------------- */
+:root {
+  --color-paper: #f3f4f2;
+  --color-paper-2: #e8eae6;
+  /* Fixed light text color for the always-dark ink/accent surfaces
+     (header, hero, footer...). Deliberately NOT redefined below —
+     unlike --color-paper it must not flip to near-black in dark mode. */
+  --color-cloud: #f3f4f2;
+  --color-ink: #20242a;
+  --color-ink-2: #14171b;
+  --color-foreground: #1e2226;
+  --color-steel: #5c6670;
+  --color-steel-light: #aab3ba;
+  --color-steel-dark: #3a4048;
+  --color-glass: #a9c6d6;
+  --color-glass-dark: #4d6e7d;
+  --color-accent: #e8590c;
+  --color-accent-dark: #c1470a;
+  --color-accent-2: #f2a93b;
+  --color-whatsapp: #25d366;
+  --color-border: #d8dbd7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #16181b;
+    --color-paper-2: #1d2024;
+    --color-ink: #0e1013;
+    --color-ink-2: #090a0c;
+    --color-foreground: #eceeec;
+    --color-steel: #9aa3aa;
+    --color-steel-light: #cdd3d6;
+    --color-steel-dark: #2a2e32;
+    --color-glass: #6f95a6;
+    --color-glass-dark: #3a5763;
+    --color-border: #2a2e32;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-cloud: var(--color-cloud);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-foreground: var(--color-foreground);
+  --color-steel: var(--color-steel);
+  --color-steel-light: var(--color-steel-light);
+  --color-steel-dark: var(--color-steel-dark);
+  --color-glass: var(--color-glass);
+  --color-glass-dark: var(--color-glass-dark);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-accent-2: var(--color-accent-2);
+  --color-whatsapp: var(--color-whatsapp);
+  --color-border: var(--color-border);
+  --font-display: var(--font-barlow-condensed);
+  --font-body: var(--font-barlow);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Eyebrow label: condensed caps with wide tracking, like a spec plate
+   stamped on an aluminium profile. */
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Marquee strip in the service ticker */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Scroll reveal */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: rise-in 0.5s ease-out both;
+}

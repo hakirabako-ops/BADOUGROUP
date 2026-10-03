@@ -1,0 +1,23 @@
+{
+  "name": "btp-site-backend",
+  "version": "1.0.0",
+  "description": "API backend pour le site BADOU GROUP",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "resend": "^6.32.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
